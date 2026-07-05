@@ -1,0 +1,29 @@
+# D&T Draft HQ
+
+A mobile-first React + TypeScript fantasy football draft assistant with a shared multi-turn recommendation engine, local autosave, and offline PWA support.
+
+## Run locally
+
+1. Install Node.js 20 or newer.
+2. Run `npm install`.
+3. Run `npm run dev` and open the local address shown.
+
+For a production check, run `npm run build` followed by `npm run preview`.
+
+## GitHub Pages
+
+The project uses relative asset paths (`base: './'`) and can be deployed from the generated `dist` folder. In repository settings, configure Pages to use your preferred build workflow and publish `dist`.
+
+## App behaviour
+
+- 14-team snake board by default, configurable from 8–16 teams.
+- Draft/remove players, available-player search, roster view, editable rankings and local autosave.
+- War Room and Top 3 use the same engine. It scores current value, roster fit, positional pressure, tier cliffs, opportunity cost, ADP gravity and a realistic next-pick partner.
+- QB/TE duplication is suppressed until late rounds unless value is exceptional; kicker and defence are held back until the closing rounds.
+- The service worker and manifest are generated during production builds for installability and offline use.
+
+The starter list is intentionally isolated in `src/data.ts`. Historical NFL Fantasy imports can later normalize draft files into the same `Player` / `Pick` models without changing the interface or engine.
+
+## Android later
+
+The production `dist` folder is ready to use as Capacitor web content. Add Capacitor when needed, set `webDir` to `dist`, then create the Android target.

@@ -1,0 +1,4 @@
+import type { DraftState } from './types';
+const KEY='dt-draft-hq-v1';
+export const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'null') as DraftState|null}catch{return null}};
+export const save=(s:DraftState)=>localStorage.setItem(KEY,JSON.stringify(s));
